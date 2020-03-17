@@ -1,3 +1,14 @@
+Version 1.3.1:
+ - Merge pull request #2 from fahadmaq007/develop
+ - Patch version as argument is added
+ - Merge branch 'release-1.3' into develop Pull Release-1.3
+ - Merge branch 'release-1.3' 1.3
+ - Merge branch 'release-1.2' 1.2
+ - Merge branch 'release-1.1' release 1.1 - 0.3.0
+ - Version bump to 0.3.0
+ - Merge branch 'release-1.0' Release1.0
+ - Merge pull request #1 from fahadmaq007/develop
+
 Version 1.3.0:
  - Merge branch 'myfeature6' into develop ture 6
  - Feature 6
