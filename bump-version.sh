@@ -9,6 +9,7 @@ if [ -f VERSION ]; then
     echo "Current version : $BASE_STRING"
     V_MINOR=$((V_MINOR + 1))
     V_PATCH=0
+    if [ -n "$1" ]; then V_PATCH=$1; fi
     SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH"
     read -p "Enter a version number [$SUGGESTED_VERSION]: " INPUT_STRING
     if [ "$INPUT_STRING" = "" ]; then
