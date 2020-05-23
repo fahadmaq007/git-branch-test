@@ -1,16 +1,24 @@
 #!/bin/bash
 
 if [ -f VERSION ]; then
+<<<<<<< Updated upstream
     BASE_STRING=`cat VERSION` #remote merge conflict
+=======
+    BASE_STRING=`cat VERSION` #local merge conflict
+>>>>>>> Stashed changes
     BASE_LIST=(`echo $BASE_STRING | tr '.' ' '`)
     V_MAJOR=${BASE_LIST[0]}
     V_MINOR=${BASE_LIST[1]}
     V_PATCH=${BASE_LIST[2]}
-    echo "Current version : $BASE_STRING"
+    echo "Current version : $BASE_STRING"  #local merge conflict
     V_MINOR=$((V_MINOR + 1))
     V_PATCH=0
     if [ -n "$1" ]; then V_PATCH=$1; fi
+<<<<<<< Updated upstream
     SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH"  #remote merge conflict
+=======
+    SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH" #local merge conflict
+>>>>>>> Stashed changes
     read -p "Enter a version number [$SUGGESTED_VERSION]: " INPUT_STRING
     if [ "$INPUT_STRING" = "" ]; then
         INPUT_STRING=$SUGGESTED_VERSION
