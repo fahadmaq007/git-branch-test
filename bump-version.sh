@@ -1,32 +1,35 @@
 #!/bin/bash
 
 if [ -f VERSION ]; then
-    BASE_STRING=`cat VERSION`
+
+    BASE_STRING=`cat VERSION` #local change
     BASE_LIST=(`echo $BASE_STRING | tr '.' ' '`)
-    V_MAJOR=${BASE_LIST[0]}
+    V_MAJOR=${BASE_LIST[0]} #only remote change
     V_MINOR=${BASE_LIST[1]}
     V_PATCH=${BASE_LIST[2]}
     echo "Current version : $BASE_STRING"
     V_MINOR=$((V_MINOR + 1))
     V_PATCH=0
     if [ -n "$1" ]; then V_PATCH=$1; fi
-    SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH"
+    SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH"#local conflict change
     read -p "Enter a version number [$SUGGESTED_VERSION]: " INPUT_STRING
     if [ "$INPUT_STRING" = "" ]; then
         INPUT_STRING=$SUGGESTED_VERSION
     fi
+
+    commits=`git rev-list --all --count` "rev #$commits based on $SUGGESTED_VERSION"
     echo "Will set new version to be $INPUT_STRING"
     echo $INPUT_STRING > VERSION
     echo "Version $INPUT_STRING:" > tmpfile
-    git log --pretty=format:" - %s" "v$BASE_STRING"...HEAD >> tmpfile
-    echo "" >> tmpfile
-    echo "" >> tmpfile
-    cat CHANGES >> tmpfile
-    mv tmpfile CHANGES
-    git add CHANGES VERSION
-    git commit -m "Version bump to $INPUT_STRING"
-    git tag -a -m "Tagging version $INPUT_STRING" "v$INPUT_STRING"
-    git push origin --tags
+    # git log --pretty=format:" - %s" "v$BASE_STRING"...HEAD >> tmpfile
+    # echo "" >> tmpfile
+    # echo "" >> tmpfile
+    # cat CHANGES >> tmpfile
+    # mv tmpfile CHANGES
+    # git add CHANGES VERSION
+    # git commit -m "Version bump to $INPUT_STRING"
+    # git tag -a -m "Tagging version $INPUT_STRING" "v$INPUT_STRING"
+    # git push origin --tags
 else
     echo "Could not find a VERSION file"
     read -p "Do you want to create a version file and start from scratch? [y]" RESPONSE
