@@ -1,7 +1,8 @@
 #!/bin/bash
 
 if [ -f VERSION ]; then
-    BASE_STRING=`cat VERSION` #remote merge conflict
+
+    BASE_STRING=`cat VERSION` #local merge conflict
     BASE_LIST=(`echo $BASE_STRING | tr '.' ' '`)
     V_MAJOR=${BASE_LIST[0]}
     V_MINOR=${BASE_LIST[1]}
@@ -10,7 +11,7 @@ if [ -f VERSION ]; then
     V_MINOR=$((V_MINOR + 1))
     V_PATCH=0
     if [ -n "$1" ]; then V_PATCH=$1; fi
-    SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH"  #remote merge conflict
+    SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH" #local merge conflict
     read -p "Enter a version number [$SUGGESTED_VERSION]: " INPUT_STRING
     if [ "$INPUT_STRING" = "" ]; then
         INPUT_STRING=$SUGGESTED_VERSION
