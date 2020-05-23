@@ -2,16 +2,16 @@
 
 if [ -f VERSION ]; then
 
-    BASE_STRING=`cat VERSION`
+    BASE_STRING=`cat VERSION` #only remote change
     BASE_LIST=(`echo $BASE_STRING | tr '.' ' '`)
-    V_MAJOR=${BASE_LIST[0]}
+    V_MAJOR=${BASE_LIST[0]} #only remote change
     V_MINOR=${BASE_LIST[1]}
     V_PATCH=${BASE_LIST[2]}
     echo "Current version : $BASE_STRING"
     V_MINOR=$((V_MINOR + 1))
     V_PATCH=0
     if [ -n "$1" ]; then V_PATCH=$1; fi
-    SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH"
+    SUGGESTED_VERSION="$V_MAJOR.$V_MINOR.$V_PATCH"#remote conflict change
     read -p "Enter a version number [$SUGGESTED_VERSION]: " INPUT_STRING
     if [ "$INPUT_STRING" = "" ]; then
         INPUT_STRING=$SUGGESTED_VERSION
