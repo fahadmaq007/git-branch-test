@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -f VERSION ]; then
-    BASE_STRING=`cat VERSION`
+    BASE_STRING=`cat VERSION` #test merge conflict
     BASE_LIST=(`echo $BASE_STRING | tr '.' ' '`)
     V_MAJOR=${BASE_LIST[0]}
     V_MINOR=${BASE_LIST[1]}
