@@ -26,7 +26,7 @@ if [ -f VERSION ]; then
     # echo "" >> tmpfile
     # cat CHANGES >> tmpfile
     # mv tmpfile CHANGES
-    # git add CHANGES VERSION
+    # git add CHANGES VERSION#local change
     # git commit -m "Version bump to $INPUT_STRING"
     # git tag -a -m "Tagging version $INPUT_STRING" "v$INPUT_STRING"
     # git push origin --tags
@@ -36,17 +36,17 @@ else
     if [ "$RESPONSE" = "" ]; then RESPONSE="y"; fi
     if [ "$RESPONSE" = "Y" ]; then RESPONSE="y"; fi
     if [ "$RESPONSE" = "Yes" ]; then RESPONSE="y"; fi
-    if [ "$RESPONSE" = "yes" ]; then RESPONSE="y"; fi
-    if [ "$RESPONSE" = "YES" ]; then RESPONSE="y"; fi#remote change
+    if [ "$RESPONSE" = "yes" ]; then RESPONSE="y"; fi#local change
+    if [ "$RESPONSE" = "YES" ]; then RESPONSE="y"; fi
     if [ "$RESPONSE" = "y" ]; then
         echo "0.1.0" > VERSION
         echo "Version 0.1.0" > CHANGES
-        git log --pretty=format:" - %s" >> CHANGES
+        git log --pretty=format:" - %s" >> CHANGES#local change
         echo "" >> CHANGES
         echo "" >> CHANGES
         git add VERSION CHANGES#remote change
         git commit -m "Added VERSION and CHANGES files, Version bump to v0.1.0"
-        git tag -a -m "Tagging version 0.1.0" "v0.1.0"
+        git tag -a -m "Tagging version 0.1.0" "v0.1.0"#local change
         git push origin --tags
     fi
 
