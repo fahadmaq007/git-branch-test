@@ -2,7 +2,7 @@
 
 if [ -f VERSION ]; then
 
-    BASE_STRING=`cat VERSION`
+    BASE_STRING=`cat VERSION` #test1 feature change
     BASE_LIST=(`echo $BASE_STRING | tr '.' ' '`)
     V_MAJOR=${BASE_LIST[0]}
     V_MINOR=${BASE_LIST[1]}
